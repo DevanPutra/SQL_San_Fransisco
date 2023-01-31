@@ -1,0 +1,16 @@
+SELECT BTS.trip_id,BTS.start_date,BTS.subscriber_type,BTS.start_station_name,BTS.start_station_id, BSS.station_id, BSS.name, BSS.landmark
+FROM bigquery-public-data.san_francisco.bikeshare_trips AS BTS
+JOIN bigquery-public-data.san_francisco.bikeshare_stations AS BSS
+ON BTS.start_station_id = BSS.station_id
+WHERE BTS.start_date between '2016-04-01' AND '2016-07-01'
+    AND BSS.landmark ='Redwood City'
+    AND BTS.subscriber_type ='Subscriber'
+ORDER BY BTS.start_date;
+
+SELECT COUNT(BTS.trip_id)
+FROM bigquery-public-data.san_francisco.bikeshare_trips AS BTS
+JOIN bigquery-public-data.san_francisco.bikeshare_stations AS BSS
+ON BTS.start_station_id = BSS.station_id
+WHERE BTS.start_date between '2016-04-01' AND '2016-07-01'
+    AND BSS.landmark ='Redwood City'
+    AND BTS.subscriber_type ='Subscriber'
